@@ -1,5 +1,6 @@
 
-val decMap = mapOf('I' to 1, 'V' to 5, 'X' to 10, 'L' to 50, 'C' to 100)
+//map each Roman numeral to its decimal value
+val decimalMap = mapOf('I' to 1, 'V' to 5, 'X' to 10, 'L' to 50, 'C' to 100)
 
 
 fun printErrorMsg(msg:String, romanNumber: String){
@@ -8,7 +9,7 @@ fun printErrorMsg(msg:String, romanNumber: String){
 fun isRomanNumber(romanNumber: String):Boolean{
     //check that all characters are valid
     for(ch in romanNumber)
-        if(decMap[ch]==null) {
+        if(decimalMap[ch]==null) {
             printErrorMsg("illegal character $ch", romanNumber)
             return false
         }
@@ -116,7 +117,7 @@ returns the decimal value of the number, or -1 if @romanNumber is not a valid nu
  */
 fun toDecimalValue(romanNumber: String): Int {
     val chars = romanNumber.toCharArray()
-    var decimalValue = decMap[chars[0]]
+    var decimalValue = decimalMap[chars[0]]
     val subtraction: Int?
     decimalValue ?: return -1
 
@@ -129,8 +130,8 @@ fun toDecimalValue(romanNumber: String): Int {
             return 2 * decimalValue
         } else {
             //different characters: subtract the first numeral from the second
-            decimalValue = decMap[chars[1]]
-            subtraction = decMap[chars[0]]
+            decimalValue = decimalMap[chars[1]]
+            subtraction = decimalMap[chars[0]]
             if (decimalValue != null && subtraction != null)
                 return decimalValue - subtraction
         }
