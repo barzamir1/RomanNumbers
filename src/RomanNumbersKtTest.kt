@@ -13,7 +13,7 @@ class RomanNumbersKtTest {
         assertFalse(isRomanNumber("XXXXV"))//at the beginning
 
         assertTrue(isRomanNumber("CCCXXXIII"))
-        assertTrue(isRomanNumber("XXXIX")) //4 not in a row
+        assertTrue(isRomanNumber("XXXIX")) //4, not in a row
     }
 
     @Test

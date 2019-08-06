@@ -13,7 +13,7 @@ fun isRomanNumber(romanNumber: String):Boolean{
             return false
         }
 
-    //splint romanNumber to hundreds, tens and ones numerals
+    //split romanNumber to hundreds, tens and ones numerals
     val numerals = splitToSubNumbers(romanNumber)
     numerals ?: return false //error occurred
 
@@ -65,7 +65,7 @@ fun isRomanNumber(romanNumber: String):Boolean{
 
 /*
 @romanNumber - the Roman representation string, assuming all characters are valid
-split the Roman string @romanNumber to sub-numbers,
+split @romanNumber to sub-numbers,
 s.t the decimal value of @romanNumber equals to the sum of the decimal values of
 all the elements in the returned list
 example input:LXXXIV, output:["L","XXX", "IV"]
@@ -76,7 +76,7 @@ fun splitToSubNumbers(romanNumber:String):MutableList<String>?{
 
     val subNumbers:MutableList<String> = mutableListOf()
 
-    //group equal characters in a row, i.e "LXXXIV"->["L", "XXX", "I", "V"]
+    //group equal characters in a row, e.g, "LXXXIV"->["L", "XXX", "I", "V"]
     while(i<romanNumber.length){
         j=i
         while(j<romanNumber.length-1 && romanNumber[j]==romanNumber[j+1])
@@ -96,7 +96,7 @@ fun splitToSubNumbers(romanNumber:String):MutableList<String>?{
         i=j+1
     }
 
-    //group subtractions, i.e ["L", "XXX", "I", "V"]->["L", "XXX", "IV"]
+    //group subtractions, e.g, ["L", "XXX", "I", "V"]->["L", "XXX", "IV"]
     i = 0
     while(i<subNumbers.size-1) {
         //if list contains [I,V] or [I,X] or [X,L] or [X,C]
